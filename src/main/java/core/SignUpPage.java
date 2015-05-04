@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class SignUpPage {
@@ -93,9 +94,12 @@ public class SignUpPage {
 	static WebElement ErrorLine;
 	
 	
+	
 	public SignUpPage(WebDriver wd) {
 		driver = wd;
 		}
+	
+	
 	
 	//method for title verification
 	public void verify_title(String expected_title, String baseUrl){
@@ -108,6 +112,7 @@ public class SignUpPage {
 	
 	//method for facebook link verification
 	public void verify_link(String title_facebook_expected){
+		PageFactory.initElements(driver, SignUpPage.class);
 		facebook_icon.click();
 		//driver.findElement(By.id("id_img_facebook")).click();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
